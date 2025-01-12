@@ -4,19 +4,19 @@ Description=Asphyxia Core
 Wants=network-online.target
 
 [Service]
+StateDirectory=asphyxia
+StateDirectoryMode=0700
+ExecStart=/opt/asphyxia/asphyxia-core -p %i -d %S/asphyxia
+# Fuck the asphyxia code quality, they always search config by dirname(argv[0])
+ReadWritePath=/opt/asphyxia
+
+KillSignal=SIGINT
+LockPersonality=false
 Environment="PATH="
 AmbientCapabilities=
 CapabilityBoundingSet=
 DeviceAllow=
 DynamicUser=true
-ExecStart=/usr/bin/asphyxia-core -p %i -d %S
-KillSignal=SIGINT
-LockPersonality=false
-
-LogsDirectory=asphyxia-core
-StateDirectory=asphyxia-core
-StateDirectoryMode=0600
-
 MemoryDenyWriteExecute=false
 NoNewPrivileges=true
 PrivateDevices=true
@@ -54,6 +54,11 @@ SystemCallFilter=~@reboot
 SystemCallFilter=~capset
 SystemCallFilter=~setdomainname
 SystemCallFilter=~sethostname
+SystemCallFilter=~@privileged
+SystemCallFilter=~@resources
+SystemCallFilter=~@swap
+SystemCallFilter=~@debug
+LockPersonality=
 UMask=0066
 
 [Install]
