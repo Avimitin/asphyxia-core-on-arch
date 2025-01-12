@@ -9,17 +9,13 @@ AmbientCapabilities=
 CapabilityBoundingSet=
 DeviceAllow=
 DynamicUser=true
-ExecStart=/usr/bin/asphyxia-core
+ExecStart=/usr/bin/asphyxia-core -p %i -d %S
 KillSignal=SIGINT
 LockPersonality=false
 
-# TODO: copy data to workdir and backup data then clean state dir
-ExecStartPre=+/usr/bin/check-userdata
 LogsDirectory=asphyxia-core
-RuntimeDirectory=asphyxia-core
 StateDirectory=asphyxia-core
-WorkingDirectory=%t/github-runner-biyun/sequencer
-StateDirectoryMode=0700
+StateDirectoryMode=0600
 
 MemoryDenyWriteExecute=false
 NoNewPrivileges=true
