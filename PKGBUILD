@@ -28,7 +28,7 @@ prepare () {
 }
 
 package () {
-  install -Dm755 "${srcdir}/asphyxia-core" "${pkgdir}/usr/bin/asphyxia-core"
+  install -vDm755 "${srcdir}/asphyxia-core" "${pkgdir}/usr/bin/${pkgname}"
 
   install -vd "${pkgdir}/usr/share/asphyxia-core/plugins"
   local install_plugin=(
@@ -44,9 +44,9 @@ package () {
     "sdvx@asphyxia"
   )
   for plug_dir in "${install_plugin[@]}"; do
-    mv "${srcdir}/${pkgname}-plugin/${plug_dir}" "${pkgdir}/usr/share/asphyxia-core/plugins"
+    mv "${srcdir}/${pkgname}-plugin/${plug_dir}" "${pkgdir}/usr/share/${pkgname}/plugins"
   done
 
-  install -Dm644 "${srcdir}/asphyxia-core@.service" "${pkgdir}/usr/lib/systemd/system/asphyxia-core.service"
+  install -vDm644 "${srcdir}/asphyxia-core@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
 }
 
