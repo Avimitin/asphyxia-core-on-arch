@@ -7,10 +7,12 @@ Arch Linux PKGBUILD for Asphyxia Core.
 ```bash
 pkgctl build
 pacman -U <pkgname>.pkg.tar.zst
+vim /opt/asphyxia/config.ini
 systemctl start asphyxia-core@<port>.service
 ```
 
-> User data saved in %S/asphyxia-core, for most systemd distro, it is /var/lib/asphyxia-core.
+* User data saved in %S/asphyxia, for most systemd distro, it is /var/lib/asphyxia.
+* Plugin and config saved in /opt/asphyxia.
 
 ## Additional notes
 
