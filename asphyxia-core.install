@@ -1,0 +1,10 @@
+post_install() {
+	cat <<EOF
+
+Asphyxia Core is installed but is not configured.
+
+Because Asphyxia Core is close source software and unpredictable, please edit /opt/asphyxia/config.ini yourself.
+
+EOF
+}
+

@@ -16,18 +16,14 @@ source=(
 )
 sha256sums=('9d02e367907dcf367c06e2d79070053c35e039966c220d1913aeeb1bd4f15fc0'
             'c0efb6abe9c3860cf2d99ea965f5c117bf4062c15af69b362477a4df7d06dba4'
-            'a66bd895ccd47cfed0bf77a8372dfe8ee4f750d747c635b3ac5a936ce35df342')
+            '9566c5c19541501a5d518426d2ffd1fda8e4fc9a5946166d5456718dd35cc86d')
 depends=(
   'glibc'
   'gcc-libs'
 )
 options=(!strip staticlibs !docs)
 makedepends=('git')
-
-# Patch the gitadora plugin with fuzzup version
-prepare () {
-  cp -r gitadora@asphyxia ${pkgname}-plugin/gitadora@asphyxia
-}
+install=asphyxia-core.install
 
 package () {
   install -vDm755 "${srcdir}/asphyxia-core" "${pkgdir}/opt/${_proj}/${pkgname}"
