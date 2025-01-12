@@ -20,6 +20,7 @@ depends=(
   'glibc'
   'gcc-libs'
 )
+options=(!strip staticlibs !docs)
 makedepends=('git')
 
 # Patch the gitadora plugin with fuzzup version
