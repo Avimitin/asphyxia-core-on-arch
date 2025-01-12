@@ -1,5 +1,6 @@
 # Maintainer: avimitin <dev@avimit.in>
 
+_proj=asphyxia
 pkgname=asphyxia-core
 pkgver=v1.50
 pkgrel=1
@@ -29,9 +30,9 @@ prepare () {
 }
 
 package () {
-  install -vDm755 "${srcdir}/asphyxia-core" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "${srcdir}/asphyxia-core" "${pkgdir}/opt/${_proj}/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/asphyxia-core/plugins"
+  install -vd "${pkgdir}/opt/${_proj}/plugins"
   local install_plugin=(
     "bst@asphyxia"
     "ddr@asphyxia"
@@ -45,7 +46,7 @@ package () {
     "sdvx@asphyxia"
   )
   for plug_dir in "${install_plugin[@]}"; do
-    mv "${srcdir}/${pkgname}-plugin/${plug_dir}" "${pkgdir}/usr/share/${pkgname}/plugins"
+    mv "${srcdir}/${pkgname}-plugin/${plug_dir}" "${pkgdir}/opt/${_proj}/plugins"
   done
 
   install -vDm644 "${srcdir}/asphyxia-core@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
