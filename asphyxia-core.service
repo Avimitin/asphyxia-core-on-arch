@@ -7,12 +7,12 @@ Wants=network-online.target
 # Fuck the asphyxia code quality, they always search config by dirname(argv[0])
 WorkingDirectory=%t/asphyxia
 RuntimeDirectory=asphyxia
-ExecStartPre=+find /opt/asphyxia/ -mindepth 1 -maxdepth 1 -exec cp -vr '{}' %t/asphyxia ';'
+ExecStartPre=+find /opt/asphyxia/ -mindepth 1 -maxdepth 1 -exec cp -r '{}' %t/asphyxia ';'
 ExecStartPre=+bash -c "chown -R $(stat -c %%u %t/asphyxia) %t/asphyxia/*"
 ExecStartPre=+chmod u=rwx %t/asphyxia
 ExecStart=%t/asphyxia/asphyxia-core
 ExecStopPost=+install --owner=root -vDm644 %t/asphyxia/config.ini /opt/asphyxia/config.ini
-ExecStopPost=+install --owner=root -vdm644 %t/asphyxia/userdata /opt/asphyxia/userdata
+ExecStopPost=+install --owner=root -vdm644 %t/asphyxia/savedata /opt/asphyxia/savedata
 
 AmbientCapabilities=
 CapabilityBoundingSet=
