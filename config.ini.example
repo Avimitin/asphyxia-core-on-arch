@@ -1,0 +1,8 @@
+port=18083
+bind=127.0.0.1
+ping_ip=127.0.0.1
+matching_port=5700
+allow_register=true
+maintenance_mode=false
+enable_paseli=true
+webui_on_startup=false

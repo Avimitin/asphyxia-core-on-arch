@@ -4,14 +4,16 @@ Description=Asphyxia Core
 Wants=network-online.target
 
 [Service]
-StateDirectory=asphyxia
-StateDirectoryMode=0700
-ExecStart=/opt/asphyxia/asphyxia-core -p %i -d %S/asphyxia
 # Fuck the asphyxia code quality, they always search config by dirname(argv[0])
-ReadWritePath=/opt/asphyxia
+WorkingDirectory=%t/asphyxia
+RuntimeDirectory=asphyxia
+ExecStartPre=+find /opt/asphyxia/ -mindepth 1 -maxdepth 1 -exec cp -vr '{}' %t/asphyxia ';'
+ExecStartPre=+bash -c "chown -R $(stat -c %%u %t/asphyxia) %t/asphyxia/*"
+ExecStartPre=+chmod u=rwx %t/asphyxia
+ExecStart=%t/asphyxia/asphyxia-core
+ExecStopPost=+install --owner=root -vDm644 %t/asphyxia/config.ini /opt/asphyxia/config.ini
+ExecStopPost=+install --owner=root -vdm644 %t/asphyxia/userdata /opt/asphyxia/userdata
 
-KillSignal=SIGINT
-LockPersonality=false
 Environment="PATH="
 AmbientCapabilities=
 CapabilityBoundingSet=
