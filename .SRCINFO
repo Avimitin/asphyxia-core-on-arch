@@ -12,10 +12,10 @@ pkgbase = asphyxia-core
 	options = staticlibs
 	options = !docs
 	source = asphyxia-core-v1.50.zip::https://github.com/asphyxia-core/asphyxia-core.github.io/releases/download/v1.50/asphyxia-core-linux-x64.zip
-	source = asphyxia-core-plugin::git+https://github.com/asphyxia-core/plugins#commit=9fa01f4104df8583b43c16665176bb1764409705
-	source = asphyxia-core@.service
+	source = asphyxia-core.service
+	source = config.ini.example
 	sha256sums = 9d02e367907dcf367c06e2d79070053c35e039966c220d1913aeeb1bd4f15fc0
-	sha256sums = c0efb6abe9c3860cf2d99ea965f5c117bf4062c15af69b362477a4df7d06dba4
-	sha256sums = 9566c5c19541501a5d518426d2ffd1fda8e4fc9a5946166d5456718dd35cc86d
+	sha256sums = e726061cab91edd0e2aa50c11dd742b79d67872bb2e13897b78807b10d34f2e1
+	sha256sums = d460cc135a833bbd462d6b983bb2e56ec78182ead76c7b41421df0addc8adbe5
 
 pkgname = asphyxia-core
